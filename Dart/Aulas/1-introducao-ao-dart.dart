@@ -2,8 +2,7 @@ void main() {
   //========= Variáveis =========
   var nome = "João"; // para inferência automática de tipo.
   Object nomeCompleto = "João Da Silva"; // para aceitar qualquer tipo de valor.
-  String sobreNome =
-      "Da Silva"; // para garantir que só valores do tipo String sejam aceitos.
+  String sobreNome = "Da Silva"; // para garantir que só valores do tipo String sejam aceitos.
 
   print(
     "Olá, $nome!. Bem-vindo ao Dart! Seu nome completo é $nomeCompleto e seu sobrenome é $sobreNome.",
