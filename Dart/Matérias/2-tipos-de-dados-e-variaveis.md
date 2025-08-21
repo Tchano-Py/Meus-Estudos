@@ -220,7 +220,97 @@ A linguagem Dart tem suporte especial para o seguinte:
 * Quando usar `const`: Para valores que nunca mudam e são conhecidos desde o início do programa.
 * Quando usar `late`: Para valores que vão ser dado depois, É como dizer: "Eu prometo que vou dar um valor para essa variável depois, antes de usar!".
 
+## Operadores em Dart
+### 🔢 Operadores Aritméticos
+Usados para realizar cálculos matemáticos básicos.
+| Operador | Finalidade                | Exemplo           | Resultado |
+| -------- | ------------------------- | ----------------- | --------- |
+| `+`      | Soma                      | `2 + 3`           | `5`       |
+| `-`      | Subtração                 | `5 - 2`           | `3`       |
+| `-expr`  | Negação unária            | `-5`              | `-5`      |
+| `*`      | Multiplicação             | `4 * 2`           | `8`       |
+| `/`      | Divisão (double)          | `5 / 2`           | `2.5`     |
+| `~/`     | Divisão truncada (int)    | `5 ~/ 2`          | `2`       |
+| `%`      | Resto da divisão (módulo) | `5 % 2`           | `1`       |
+| `++var`  | Incremento prefixo        | `var a = 2; ++a;` | `3`       |
+| `var++`  | Incremento pós-fixo       | `var a = 2; a++;` | `3`       |
+| `--var`  | Decremento prefixo        | `var a = 2; --a;` | `1`       |
+| `var--`  | Decremento pós-fixo       | `var a = 2; a--;` | `1`       |
+
+### ⚖️ Operadores de Igualdade e Relacionais
+Permitem comparar valores e retornam `true` ou `false`.
+| Operador | Finalidade         | Exemplo  | Resultado |
+| -------- | ------------------ | -------- | --------- |
+| `==`     | Igualdade de valor | `2 == 2` | `true`    |
+| `!=`     | Diferença de valor | `2 != 3` | `true`    |
+| `>`      | Maior que          | `5 > 2`  | `true`    |
+| `<`      | Menor que          | `2 < 5`  | `true`    |
+| `>=`     | Maior ou igual     | `5 >= 5` | `true`    |
+| `<=`     | Menor ou igual     | `3 <= 5` | `true`    |
+
+### 🧾 Operadores de Teste de Tipo
+Usados para verificar ou converter tipos em tempo de execução.
+| Operador | Finalidade                    | Exemplo                  | Resultado                    |
+| -------- | ----------------------------- | ------------------------ | ---------------------------- |
+| `is`     | Verifica tipo                 | `"abc" is String`        | `true`                       |
+| `is!`    | Verifica se **não** é do tipo | `"abc" is! int`          | `true`                       |
+| `as`     | Cast de tipo                  | `(obj as String).length` | Converte `obj` para `String` |
+
+### 🔐 Operadores Lógicos
+Usados para expressões condicionais que retornam `true` ou `false`.
+| Operador | Finalidade     | Exemplo         | Resultado |        |   |         |        |
+| -------- | -------------- | --------------- | --------- | ------ | - | ------- | ------ |
+| `&&`     | AND lógico     | `true && false` | `false`   |        |   |         |        |
+| \`       |                | \`              | OR lógico | \`true |   | false\` | `true` |
+| `!`      | Negação lógica | `!true`         | `false`   |        |   |         |        |
+
+### 📝 Operadores de Atribuição
+Usados para definir ou atualizar o valor de variáveis.
+| Operador | Finalidade                | Exemplo          | Resultado                    |
+| -------- | ------------------------- | ---------------- | ---------------------------- |
+| `=`      | Atribuição simples        | `a = 5`          | `a = 5`                      |
+| `+=`     | Soma e atribui            | `a = 2; a += 3;` | `a = 5`                      |
+| `-=`     | Subtrai e atribui         | `a = 5; a -= 2;` | `a = 3`                      |
+| `*=`     | Multiplica e atribui      | `a = 3; a *= 2;` | `a = 6`                      |
+| `/=`     | Divide e atribui          | `a = 6; a /= 2;` | `a = 3.0`                    |
+| `??=`    | Atribui somente se `null` | `a ??= 10;`      | Se `a` for `null`, vira `10` |
+
+### 🔄 Operadores Null-aware
+Permitem trabalhar de forma segura com valores `null`.
+| Operador | Finalidade                                           | Exemplo                  | Resultado |
+| -------- | ---------------------------------------------------- | ------------------------ | --------- |
+| `??`     | Retorna valor da direita se o da esquerda for `null` | `a ?? 5` (se `a=null`)   | `5`       |
+| `??=`    | Atribui valor se variável for `null`                 | `a ??= 10` (se `a=null`) | `a = 10`  |
+
+### 🌊 Operadores Cascade
+Permitem encadear várias chamadas em um mesmo objeto.
+| Operador | Finalidade                                        | Exemplo                     | Resultado                                    |
+| -------- | ------------------------------------------------- | --------------------------- | -------------------------------------------- |
+| `..`     | Encadeia chamadas no mesmo objeto                 | `obj..method1()..method2()` | Executa `method1` e `method2` no mesmo `obj` |
+| `?..`    | Encadeia chamadas apenas se objeto não for `null` | `obj?..method()`            | Executa `method()` apenas se `obj != null`   |
+
+### 📦 Operadores Spread
+Facilitam a inserção de elementos de uma coleção dentro de outra. 
+| Operador | Finalidade                                 | Exemplo             | Resultado                 |
+| -------- | ------------------------------------------ | ------------------- | ------------------------- |
+| `...`    | Espalha elementos de uma coleção           | `[1, 2, ...[3, 4]]` | `[1, 2, 3, 4]`            |
+| `...?`   | Espalha elementos apenas se não for `null` | `[1, 2, ...?list]`  | Se `list=null` → `[1, 2]` |
+
+
+### ⚙️ Operadores Bitwise e Shift
+Usados para manipulação de bits em valores inteiros.
+| Operador | Finalidade                | Exemplo      | Resultado                   | 
+| -------- | ------------------------- | ------------ | --------------------------- |
+| `&`      | AND bit a bit             | `5 & 3`      | `1`                         | 
+| `\`      | OR bit a bit              |              |                             |
+| `^`      | XOR bit a bit             | `5 ^ 3`      | `6`                         | 
+| `~`      | NOT bit a bit             | `~5`         | `-6`                        | 
+| `<<`     | Shift para esquerda       | `5 << 1`     | `10`                        |
+| `>>`     | Shift para direita        | `5 >> 1`     | `2`                         | 
+| `>>>`    | Shift lógico para direita | `-5 >>> 1`   | Grande positivo (sem sinal) |
+
 ## Fontes em PT/EN:
 
 * [Built-in types](https://dart.dev/language/built-in-types)
 * [Variables](https://dart.dev/language/variables)
+* [Operators](https://dart.dev/language/operators)
