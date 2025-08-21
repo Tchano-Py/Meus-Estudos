@@ -309,8 +309,77 @@ Usados para manipulação de bits em valores inteiros.
 | `>>`     | Shift para direita        | `5 >> 1`     | `2`                         | 
 | `>>>`    | Shift lógico para direita | `-5 >>> 1`   | Grande positivo (sem sinal) |
 
+## 🔄 Conversões de Tipos em Dart
+Dart permite `casting` (conversão de tipos em tempo de execução) e conversões de valores (de um tipo para outro, como `String` → `int`).
+
+1. Casting Explícito com `as`
+Usado para converter dinamicamente um objeto para um tipo específico.
+| Sintaxe       | Finalidade                                                                   | Exemplo                  | Resultado                  |
+| ------------- | ---------------------------------------------------------------------------- | ------------------------ | -------------------------- |
+| `obj as Tipo` | Faz cast de um objeto para o tipo desejado. Gera erro se não for compatível. | `var s = obj as String;` | Converte `obj` em `String` |
+
+2. Testes de Tipo (`is` e `is!`)
+Antes de converter, é comum verificar o tipo com `is`.
+| Sintaxe        | Finalidade                          | Exemplo           | Resultado |
+| -------------- | ----------------------------------- | ----------------- | --------- |
+| `obj is Tipo`  | Verifica se `obj` é do tipo         | `"abc" is String` | `true`    |
+| `obj is! Tipo` | Verifica se `obj` **não** é do tipo | `"abc" is! int`   | `true`    |
+
+3. Conversões Numéricas
+Métodos para transformar números entre `int` e `double`.
+| Origem            | Método        | Exemplo           | Resultado |
+| ----------------- | ------------- | ----------------- | --------- |
+| `int → double`    | `.toDouble()` | `10.toDouble()`   | `10.0`    |
+| `double → int`    | `.toInt()`    | `12.9.toInt()`    | `12`      |
+| `double → String` | `.toString()` | `3.14.toString()` | `"3.14"`  |
+| `int → String`    | `.toString()` | `42.toString()`   | `"42"`    |
+
+4. Conversões entre String e Números
+| Origem → Destino           | Método                | Exemplo                      | Resultado |
+| -------------------------- | --------------------- | ---------------------------- | --------- |
+| `String → int`             | `int.parse()`         | `int.parse("123")`           | `123`     |
+| `String → int` (seguro)    | `int.tryParse()`      | `int.tryParse("abc")`        | `null`    |
+| `String → double`          | `double.parse()`      | `double.parse("12.5")`       | `12.5`    |
+| `String → double` (seguro) | `double.tryParse()`   | `double.tryParse("x")`       | `null`    |
+| `int → String`             | `.toString()`         | `123.toString()`             | `"123"`   |
+| `double → String`          | `.toStringAsFixed(n)` | `3.14159.toStringAsFixed(2)` | `"3.14"`  |
+
+> Em Dart, o método `tryParse` é usado para tentar converter uma `String` em um número (por exemplo, `int` ou `double`) de forma segura, sem lançar erro caso a conversão falhe.
+
+5. Conversões com Listas e Coleções
+| Método                | Finalidade                                     | Exemplo                             | Resultado     |
+| --------------------- | ---------------------------------------------- | ----------------------------------- | ------------- |
+| `.cast<T>()`          | Converte uma lista dinâmica para lista tipada  | `[1,2,3].cast<int>()`               | `[1,2,3]`     |
+| `.map()`              | Transforma elementos em outro tipo             | `["1","2"].map(int.parse).toList()` | `[1,2]`       |
+| `List<String>.from()` | Cria lista tipada a partir de outra            | `List<String>.from(["a","b"])`      | `["a","b"]`   |
+| `.toSet()`            | Converte lista em conjunto (remove duplicatas) | `[1,2,2,3].toSet()`                 | `{1,2,3}`     |
+| `.toList()`           | Converte `Set` em lista                        | `{1,2,3}.toList()`                  | `[1,2,3]`     |
+| `.toString()`         | Converte coleção para String                   | `[1,2,3].toString()`                | `"[1, 2, 3]"` |
+
+6. Conversões com Map
+| Método         | Finalidade                           | Exemplo                                           | Resultado   |
+| -------------- | ------------------------------------ | ------------------------------------------------- | ----------- |
+| `.cast<K,V>()` | Converte um `Map` dinâmico em tipado | `{"a":1}.cast<String,int>()`                      | `{"a":1}`   |
+| `.map()`       | Transforma chaves/valores            | `{"a":1}.map((k,v) => MapEntry(k, v.toString()))` | `{"a":"1"}` |
+
+7. Conversões com Generics (Tipos Genéricos)
+| Uso             | Finalidade                                              | Exemplo                      | Resultado |
+| --------------- | ------------------------------------------------------- | ---------------------------- | --------- |
+| Classe genérica | Permite armazenar qualquer tipo de dado de forma tipada | `Box<int>(5).getValue()`     | `5`       |
+| Método genérico | Converte/usa tipos dinamicamente                        | `printElement<String>("oi")` | `"oi"`    |
+
+8. Conversões Especiais
+| Situação                      | Método                    | Exemplo                            | Resultado                   |
+| ----------------------------- | ------------------------- | ---------------------------------- | --------------------------- |
+| `num → String com formatação` | `.toStringAsFixed(n)`     | `3.14159.toStringAsFixed(2)`       | `"3.14"`                    |
+| `num → String com precisão`   | `.toStringAsPrecision(n)` | `3.14159.toStringAsPrecision(3)`   | `"3.14"`                    |
+| `DateTime → String`           | `.toIso8601String()`      | `DateTime.now().toIso8601String()` | `"2025-08-21T15:30:00.000"` |
+| `String → DateTime`           | `DateTime.parse()`        | `DateTime.parse("2025-08-21")`     | `2025-08-21 00:00:00.000`   |
+
+
 ## Fontes em PT/EN:
 
 * [Built-in types](https://dart.dev/language/built-in-types)
 * [Variables](https://dart.dev/language/variables)
-* [Operators](https://dart.dev/language/operators)
+* [Operators](https://dart.dev/language/operators) 
+* [Dart Type Cast: Converting Between Data Types](https://www.dhiwise.com/post/the-ultimate-guide-to-dart-type-cast-converting-data-types)
