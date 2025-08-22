@@ -165,6 +165,18 @@ for (var i = 0; i < 3; i++) {
 
 Pressuposto: o `break outerLoop` interrompe o loop externo.
 
+### Comparativo Simples
+| Estrutura         | Quando Usar                            | Exemplo Resumido                    |
+| ----------------- | -------------------------------------- | ----------------------------------- |
+| `for` tradicional | Para repetir com índice numérico       | `for (i = 0; i < n; i++)`           |
+| `for-in`          | Para iterar direto sobre elementos     | `for (item in lista)`               |
+| `while`           | Enquanto condição for verdadeira       | `while (condição) { ... }`          |
+| `do-while`        | Executa antes de conferir a condição   | `do { ... } while (condição);`      |
+| `break`           | Interrompe o loop imediatamente        | `if (condição) break;`              |
+| `continue`        | Pula para a próxima iteração           | `if (skip) continue;`               |
+| `label`           | Controlar laços aninhados com precisão | `break nomeLabel; / continue nome;` |
+
+
 ## Fontes em PT/EN:
 
 - [Branches](https://dart.dev/language/branches)
