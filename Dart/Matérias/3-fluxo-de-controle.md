@@ -91,8 +91,84 @@ switch (numero) {
 }
 ```
 
+# Loops em Dart
+Loops são estruturas de controle que permitem repetir um bloco de código enquanto uma condição for verdadeira ou enquanto existirem elementos a percorrer. São essenciais para automatizar tarefas repetitivas em programas.
+
+### `for` tradicional e `for-in`
+Você pode repetir com for, da forma clássica, usando um índice:
+
+```dart
+var mensagem = StringBuffer('Dart é legal');
+for (var i = 0; i < 5; i++) {
+  mensagem.write('!');
+}
+print(mensagem); // 'Dart é legal!!!!!'
+```
+> `StringBuffer`: É uma classe especial do Dart usada para construir strings de forma eficiente. Diferente da `string` comum (`String`), que é imutável (toda vez que você concatena uma `string`, o Dart cria uma nova na memória), o `StringBuffer` permite alterar o conteúdo sem criar novas cópias a cada operação.
+
+Ou usar o `for-in`, ideal para coleções iteráveis:
+```dart
+for (var item in lista) {
+  print(item);
+}
+```
+
+Além disso, você pode usar padrões para destilar dados diretamente:
+```dart
+for (final (nome: name, idade: age) in listaPessoas) {
+  print('$name tem $age anos');
+}
+```
+
+### `while` e `do-while`
+`while` avalia a condição antes de executar o bloco:
+```dart
+while (!terminou()) {
+  fazAlgo();
+}
+```
+
+`do-while` executa ao menos uma vez e depois checa a condição:
+```dart
+do {
+  fazAlgo();
+} while (!terminou());
+```
+
+### `break` e `continue`
+`break` interrompe o loop imediatamente:
+```dart
+while (true) {
+  if (deveParar()) break;
+}
+```
+
+`continue` pula a iteração atual e vai para a próxima:
+```dart
+for (var item in lista) {
+  if (!valido(item)) continue;
+  processa(item);
+}
+```
+
+### Labels (Rótulos)
+
+Você pode usar labels para controlar loops aninhados com mais precisão:
+```dart
+outerLoop:
+for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {
+    if (i == j) break outerLoop;
+  }
+}
+```
+
+Pressuposto: o `break outerLoop` interrompe o loop externo.
+
 ## Fontes em PT/EN:
 
 - [Branches](https://dart.dev/language/branches)
 - [Controle de Fluxo no Dart](https://www.youtube.com/watch?v=pIbquX6earI)
 - [Linguagem Dart: Controle de Fluxo](https://www.devmedia.com.br/linguagem-dart-controle-de-fluxo/40758)
+- [Loops](https://dart.dev/language/loops)
+- [Dart - Loops](https://www.geeksforgeeks.org/dart/dart-loops/)
