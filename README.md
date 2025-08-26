@@ -13,7 +13,7 @@ Se encontrar este guia útil, não hesite em deixar uma estrela ⭐️ no reposi
 ## Contatos
 
 - **Email**: tchanopy@gmail.com
-- **WhatsApp**: +244 955 167 959
+- **WhatsApp**: (+244) 955 167 959
 
 Para mais informações sobre mim, confira meu perfil.
 
